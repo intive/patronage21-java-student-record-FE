@@ -10,6 +10,7 @@ import {
   APP_ERROR_MSG,
   NO_CONNECTION_MSG,
   SERVER_ERROR_MSG,
+  USER_NOT_FOUND_MSG
 } from "../config/AlertConstants";
 
 export const checkSearchAlerts = selector({
@@ -67,6 +68,36 @@ export const checkGroupsFetchAlerts = selector({
         set(alertFrameVisibleState, true);
     }
     set(alertState, alert);
+  },
+});
+
+export const checkUserFetchAlerts = selector({
+  key: "checkUserFetchAlerts",
+  set: ({ get, set }, caller) => {
+    const status = get(lastResponseState).status;
+    const content = get(lastResponseState).body;
+    const lastAlertCaller = get(alertState).caller;
+    const alert = {};
+
+    switch (status) {
+      case 200:
+        if (lastAlertCaller === caller) {
+          set(alertFrameVisibleState, false);
+        }
+        break;
+      case 404:
+        if (content.violationErrors) {
+          setAlert(alert, ERROR, USER_NOT_FOUND_MSG, content);
+        } else {
+          setAlert(alert, ERROR, NO_CONNECTION_MSG, "");
+        }
+        alert.caller = caller;
+        set(alertFrameVisibleState, true);
+        break;
+      default:
+        checkCommonErrors(status, content, alert, caller);
+        set(alertFrameVisibleState, true);
+    }
   },
 });
 
