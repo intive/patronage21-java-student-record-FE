@@ -34,7 +34,10 @@ function SelectInput(props) {
 
 SelectInput.propTypes = {
   list: PropTypes.array.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]),
   handleChange: PropTypes.func.isRequired,
 };
 
