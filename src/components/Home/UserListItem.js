@@ -1,11 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState, useResetRecoilState } from "recoil";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItem from "@material-ui/core/ListItem";
 import Avatar from "@material-ui/core/Avatar";
 import { USER_INACTIVE_STATUS, MAX_MARK } from "../../config/Constants";
+import {
+  activeViewState,
+  userProperty,
+  techGroupSelectValueState,
+  viewChangedState,
+  showInactiveUsersState,
+  alertFrameVisibleState,
+} from "../../state/atoms";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core";
 import { getMarksFromLogin } from "../../state/selectors";
@@ -40,13 +48,30 @@ const styles = makeStyles({
 function UserListItem(props) {
   const classes = styles();
   const marks = useRecoilValue(getMarksFromLogin(props.user.login));
+  const setLogin = useSetRecoilState(userProperty("login"));
+  const setMarks = useSetRecoilState(userProperty("marks"));
+  const setActiveView = useSetRecoilState(activeViewState);
+  const setViewChanged = useSetRecoilState(viewChangedState);
+  const resetShowAllUsers = useResetRecoilState(showInactiveUsersState);
+  const setAlertFrameVisibleState = useSetRecoilState(alertFrameVisibleState);
+  const resetTechGroupSelectValue = useResetRecoilState(
+    techGroupSelectValueState
+  );
 
   const getAvgMark = () =>
     Math.round(
       10 * (marks.reduce((total, mark) => total + mark) / marks.length)
     ) / 10;
 
-  const handleClick = (login) => () => {};
+  const handleClick = (login) => () => {
+    setLogin(login);
+    setMarks(marks);
+    setActiveView("user");
+    setViewChanged(true);
+    resetTechGroupSelectValue();
+    resetShowAllUsers();
+    setAlertFrameVisibleState(false);
+  };
 
   const user = { ...props.user };
   return (

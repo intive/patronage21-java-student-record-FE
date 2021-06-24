@@ -51,3 +51,17 @@ export const getUsers = async (role, showAllUsers, searchedUserData, group) => {
     return response;
   }
 };
+
+export const getUser = async (login) => {
+  let response;
+  try {
+    response = await api.get(`/users/${login}`);
+    if (!response.body.user) {
+      response.body.user = {};
+    }
+  } catch (error) {
+    response = { error, body: { user: {} } };
+  } finally {
+    return response;
+  }
+};

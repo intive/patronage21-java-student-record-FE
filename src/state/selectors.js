@@ -95,10 +95,22 @@ export const getMarksFromLogin = selectorFamily({
   get: (login) => () => {
     const marks = [];
     const length = login.length;
-    const marksCount = length < 3 ? length : 3 
+    const marksCount = length < 3 ? length : 3;
     for (let i = 0; i < marksCount; i++) {
       marks[i] = login.charCodeAt(i) % 6;
     }
     return marks;
+  },
+});
+
+export const getAvgMark = selector({
+  key: "getAvgMark",
+  get: ({ get }) => {
+    const marks = get(userProperty("marks"));
+    return (
+      Math.round(
+        10 * (marks.reduce((total, mark) => total + mark) / marks.length)
+      ) / 10
+    );
   },
 });

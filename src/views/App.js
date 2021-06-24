@@ -6,6 +6,7 @@ import GlobalStyle from "../styles/global";
 import { useRecoilValue } from "recoil";
 import { activeViewState } from "../state/atoms";
 import Home from "../views/Home";
+import User from "../views/User";
 import Content from "../components/UI/Layout/Content";
 import UserHeader from "../components/UI/Navigation/UserHeader";
 
@@ -13,6 +14,7 @@ function App() {
   const activeView = useRecoilValue(activeViewState);
   const views = {
     home: Home,
+    user: User,
   };
   const View = views[activeView];
 

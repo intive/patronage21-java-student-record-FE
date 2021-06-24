@@ -18,16 +18,18 @@ export const HOME_SEARCH_NO_RESULTS = "Brak wyników";
 export const HOME_SEARCH_THROTTLE_TIME = 800;
 export const HOME_LIST_CANDIDATES_TITLE = "Uczestnicy";
 export const HOME_DROPDOWN_DEFAULT_VALUE = "Wszystkie grupy technologiczne";
+export const USER_MARKS_TITLE = "Oceny";
 export const DROPDOWN_MARK_FROM_HIGHEST_VALUE = "Od najwyżej ocenionych";
 export const DROPDOWN_MARK_FROM_LOWEST_VALUE = "Od najniżej ocenionych";
 export const BACK_BTN_TEXT = "Wróć";
 export const ERROR_PAGE_GENERAL_TITLE = "Wystąpił błąd";
-export const IMAGE_BASE64_PREFIX = "data:image/";
 export const IMAGE_BASE64_JPG_PREFIX = "data:image/jpg;base64,";
 export const DIALOG_AGREE_BTN_TEXT = "Potwierdź";
 export const DIALOG_CANCEL_BTN_TEXT = "Anuluj";
 export const MAX_MARK = 5;
-export const AVG_MARK = "Średnia ocen";
+export const AVG_MARK_TITLE = "Średnia ocen";
+export const REASON_TITLE_TXT = "Uzasadnienie";
+export const STAGE_TXT = "Etap";
 export const USER_PROPERTIES = {
   login: "Login",
   firstName: "Imię",
