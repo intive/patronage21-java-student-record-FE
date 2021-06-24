@@ -19,6 +19,7 @@ export const HOME_SEARCH_THROTTLE_TIME = 800;
 export const HOME_LIST_CANDIDATES_TITLE = "Uczestnicy";
 export const HOME_DROPDOWN_DEFAULT_VALUE = "Wszystkie grupy technologiczne";
 export const USER_MARKS_TITLE = "Oceny";
+export const USER_REASON_PLACEHOLDER = "Wpisz uzasadnienie oceny";
 export const DROPDOWN_MARK_FROM_HIGHEST_VALUE = "Od najwyżej ocenionych";
 export const DROPDOWN_MARK_FROM_LOWEST_VALUE = "Od najniżej ocenionych";
 export const BACK_BTN_TEXT = "Wróć";
