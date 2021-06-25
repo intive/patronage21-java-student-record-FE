@@ -1,5 +1,5 @@
 FROM node:16-alpine3.13 AS builder
-ENV REACT_APP_USER_MODULE_URL=/frontend-api
+ENV REACT_APP_USER_MODULE_URL=http://intive-patronage.pl/frontend-api
 WORKDIR '/app'
 COPY package*.json ./
 COPY .babelrc .
