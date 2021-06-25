@@ -14,7 +14,7 @@ import { cancelUserEdition } from "../../../state/selectors";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import {
   BREADCRUMBS_HOME,
-  BREADCRUMBS_STUDEND_RECORD,
+  BREADCRUMBS_STUDENT_RECORD,
   USER_PANEL_MODULE_URL,
 } from "../../../config/Constants";
 import styled from "styled-components";
@@ -34,7 +34,7 @@ function UserBreadcrumbs() {
 
   const breadCrumbItems = {
     users: {
-      text: BREADCRUMBS_STUDEND_RECORD,
+      text: BREADCRUMBS_STUDENT_RECORD,
       view: "home",
     },
     user: {
